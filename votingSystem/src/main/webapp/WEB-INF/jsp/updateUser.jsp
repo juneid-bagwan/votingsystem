@@ -6,9 +6,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -180,46 +178,49 @@ to {
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
 </head>
+
 <body>
 	<h2>
-		<i>new user</i>
+		<i>update user</i>
 	</h2>
 	<div id="res">
-		<form action="addUser" method="post" >
+		<form th:action="@{/updateUserDet/{id} (id=${obj.uid})}" th:object="${obj}">
 
 			<div class="group">
-				<input type="text" required
+				<input type="number" required readonly id="name" th:value="${obj.uid}"
 					oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
 					name="uid"> <span class="highlight"></span> <span
 					class="bar"></span> <label>uid</label>
 			</div>
 
 			<div class="group">
-				<input type="text" required name="fname"> <span
-					class="highlight"></span> <span class="bar"></span> <label>fname</label>
+				<input type="text" required name="fname" th:value="${obj.fname}">
+				<span class="highlight"></span> <span class="bar"></span> <label>first
+					name</label>
 			</div>
 
 			<div class="group">
-				<input type="text" required name="lname"> <span
-					class="highlight"></span> <span class="bar"></span> <label>lname</label>
+				<input type="text" required name="lname" th:value="${obj.lname}">
+				<span class="highlight"></span> <span class="bar"></span> <label>last
+					name</label>
 			</div>
 			<div class="group">
-				<input type="text" required name="mno"
+				<input type="text" required name="mno" th:value="${obj.mno}"
 					oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
 				<span class="highlight"></span> <span class="bar"></span> <label>mobile
 					no</label>
 			</div>
 			<div class="group">
-				<input type="text" required name="address"> <span
-					class="highlight"></span> <span class="bar"></span> <label>address</label>
+				<input type="text" required name="address" th:value="${obj.address}">
+				<span class="highlight"></span> <span class="bar"></span> <label>address</label>
 			</div>
 			<div class="group">
-				<input type="Date" required name="dob"> <span
-					class="highlight"></span> <span class="bar"></span> <label>Date
+				<input type="Date" required name="dob" th:value="${obj.dob}">
+				<span class="highlight"></span> <span class="bar"></span> <label>Date
 					Of Birth</label>
 			</div>
 			<button name="submit" class="btn btn-outline-dark" value="submit"
-				type="submit" style="margin-left: 100px">submit</button>
+				type="submit" style="margin-left: 100px">update</button>
 
 		</form>
 	</div>
